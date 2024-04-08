@@ -17,6 +17,9 @@ const Profile = () => {
       <div className="w-full text-white rounded-lg overflow-hidden p-3 bg-white max-h-96 min-h-[300px]">
         <LineChart data2={game} color={"orange"} />
       </div>
+      <div className="w-full text-white rounded-lg overflow-hidden p-3 bg-white max-h-96 min-h-[300px]">
+        <LineChart data2={app} color={"red"} />
+      </div>
       <div className="w-full text-white rounded-lg overflow-hidden p-3 max-h-96">
         <Rounded />
       </div>
@@ -98,4 +101,15 @@ const game = {
     },
   ],
   title: "Game Development Skills",
+};
+const app = {
+  labels: ["React Native",],
+  datasets: [
+    {
+      label: "App Development",
+      data: [40, 60, 100],
+      backgroundColor: "rgba(255, 99, 132, 0.5)",
+    },
+  ],
+  title: "App Development Skills",
 };

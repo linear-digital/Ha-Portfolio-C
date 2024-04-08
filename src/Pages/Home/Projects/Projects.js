@@ -5,8 +5,7 @@ import { AnimatePresence, motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import {
   AllProjectsAnimation,
-  ProjectHeadingText,
-  ProjectSubHeadingText,
+  ContactTextAnimation,
 } from "../../../Animations/Animations";
 import { projectsAll } from "../../util/data";
 
@@ -44,12 +43,15 @@ const Projects = () => {
   return (
     <>
       <section className="container px-6 mx-auto py-20" id="project" ref={ref}>
-        <h2
+        <motion.h2
+          initial="hidden"
+          animate={viewDiv && "visible"}
+          variants={{...ContactTextAnimation}}
           className="mb-4 text-5xl text-center tracking-tight font-extrabold  text-dark dark:text-white sm:leading-none"
         >
-          Something that he has
-          <span className="text-indigo-600 dark:text-indigo-500"> build</span>
-        </h2>
+         My
+          <span className="text-indigo-600 dark:text-indigo-500 pl-3">Project's</span>
+        </motion.h2>
         <p
           className="text-xl text-center dark:text-gray-400"
         >
@@ -73,7 +75,7 @@ const Projects = () => {
           {filtered.length > 0 ? (
             <AnimatePresence>
               {filtered.map((project, index) => (
-                <Project key={index} project={project} />
+                <Project key={index} number={index} project={project} />
               ))}
             </AnimatePresence>
           ) : (

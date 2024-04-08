@@ -3,6 +3,7 @@ import "./About.css";
 import { useInView } from "react-intersection-observer";
 import { useAnimation, motion } from "framer-motion";
 import {
+  ContactTextAnimation,
   bannerLeftVariant,
   bannerRightVariant,
 } from "../../Animations/Animations";
@@ -28,10 +29,14 @@ const About = () => {
   return (
     <div id="about" ref={ref}>
       <section className="text-gray-700 px-6 body-font dark:text-white">
-        <h2 className=" text-5xl text-center tracking-tight font-extrabold  text-dark dark:text-white sm:leading-none mt-5">
+        <motion.h2 
+          initial="hidden"
+          animate={viewDiv && "visible"}
+          variants={ContactTextAnimation}
+        className=" text-5xl text-center tracking-tight font-extrabold  text-dark dark:text-white sm:leading-none mt-5">
           About
           <span className="text-indigo-600 dark:text-indigo-500"> Me</span>
-        </h2>
+        </motion.h2>
 
         <div className="container mx-auto flex px-5 py-20 md:flex-row flex-col items-center justify-between">
           <motion.div

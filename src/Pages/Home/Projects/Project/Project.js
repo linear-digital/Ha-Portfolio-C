@@ -1,11 +1,35 @@
-import { motion } from "framer-motion";
-import React from "react";
+import { motion, useAnimation } from "framer-motion";
+import React, { useEffect, useState } from "react";
 import "./Project.css";
+import { useInView } from 'react-intersection-observer';
 
-const Project = ({ project }) => {
+const Project = ({ project, number }) => {
   // console.log(project)
+
+  const { ref, inView } = useInView({
+    threshold: 0.5,
+    triggerOnce: true,
+  });
+
+  const [viewDiv, setViewDiv] = useState(false);
+
+  const animation = useAnimation();
+
+  useEffect(() => {
+    if (inView) {
+      setViewDiv(true);
+    }
+    if (!inView) {
+      setViewDiv(false);
+    }
+  }, [inView, animation]);
+
   return (
-    <motion.div
+    <section
+    ref={ref}
+    >
+      <motion.div
+      
       layout
       className="project_parent w-full"
       animate={{
@@ -14,7 +38,7 @@ const Project = ({ project }) => {
       }}
       initial={{ opacity: 0, scale: 0 }}
       exit={{ opacity: 0, scale: 0 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: number, delay: number / 20, type: "spring" }}
     >
 
       <div className="project_imageandsocial w-full">
@@ -122,6 +146,7 @@ const Project = ({ project }) => {
         ))}
       </div>
     </motion.div>
+    </section>
   );
 };
 

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import "react-circular-progressbar/dist/styles.css";
 
 import { motion, useAnimation } from "framer-motion";
-import { serviceTextAnimation } from "../../../Animations/Animations";
+import { ContactTextAnimation, serviceTextAnimation } from "../../../Animations/Animations";
 import { useInView } from "react-intersection-observer";
 import Slider from './Slider';
 
@@ -21,7 +21,7 @@ const SkillCard = ({ data, list }) => {
     </div>
     <div className="skill-box">
       <div className="skill-bar">
-        <span className={`skill-per gradiant css`}
+        <span className={`skill-per bg-[#6366F1] css`}
           style={{ width: `${data.pers}%`, animationDelay: `${1 + list / 5}s` }}
         >
           <span className="tooltip">{data.pers}%</span>
@@ -169,7 +169,11 @@ const Skills = () => {
 
   return (
     <div id="skills">
-      <h1 className="text-5xl mb-3 text-indigo-500 font-bold text-center title">Programming Skills</h1>
+      <motion.h1 
+       initial="hidden"
+       animate={viewDiv && "visible"}
+       variants={ContactTextAnimation}
+      className="text-5xl mb-3 text-indigo-500 font-bold text-center title">Programming Skills</motion.h1>
       <h2 className="text-2xl font-bold text-center text-white">
         I Work Hard to Improve My Skills
         <br /> Regularly
@@ -190,7 +194,7 @@ const Skills = () => {
               data-aos="fade-up"
               data-aos-duration="2000"
             >
-              <h1 className="text-center text-indigo-500 text-3xl">Web Development</h1>
+              <h1 className="text-center font-semibold text-indigo-500 text-3xl">Web Development</h1>
               {
                 webDev.map((k, index) => <SkillCard list={index} data={k} key={k.name} />)
               }
@@ -200,15 +204,15 @@ const Skills = () => {
               data-aos="fade-up"
               data-aos-duration="2000"
             >
-              <h1 className="text-center text-indigo-500 text-3xl">Software Engineering</h1>
+              <h1 className="text-center text-indigo-500 text-3xl font-semibold">Software Engineering</h1>
 
               {
                 soft.map((k, index) => <SkillCard list={index} data={k} key={k.name} />)
               }
-              <h1 className="text-center text-indigo-500 text-3xl mt-5">Game Development</h1>
+              <h1 className="text-center text-indigo-500 text-3xl mt-5 font-semibold">Game Development</h1>
               {
                 gameD.map((k, index) => <SkillCard list={index + 9} data={k} key={k.name} />)
-              } <h1 className="text-center text-indigo-500 text-3xl mt-5">App Development</h1>
+              } <h1 className="text-center text-indigo-500 text-3xl mt-5 font-semibold">App Development</h1>
               {
                 app.map((k, index) => <SkillCard list={index + 10} data={k} key={k.name} />)
               }

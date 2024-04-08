@@ -30,6 +30,7 @@ import Licenseing from "./Pages/licenseing/Licenseing";
 import "animate.css";
 import Experience from "./Pages/Experience/Experience";
 import PrivacyPolicy from "./Pages/Privacy-Policy/PrivacyPolicy";
+import Company from "./Pages/Company/Company";
 
 function App() {
   const Layout = () => {
@@ -50,9 +51,11 @@ function App() {
       <div>
         <ThemeProvider>
           <HelmetProvider>
+            {/* Cursor  */}
             <AnimatedCursor innerSize={12} outerSize={10} color="67, 56, 202" />
-            {/* <Particle /> */}
-            <ScrollToTop smooth />
+            {/* Jiki miki  */}
+            <Particle /> 
+            <ScrollToTop smooth color="white" style={{backgroundColor: "#6366F1" ,bottom:'130px'}}/>
             <Navbar />
             <Background>
               <Outlet />
@@ -104,6 +107,10 @@ function App() {
         {
           path: "experience",
           element: <Experience />,
+        },
+        {
+          path: "company",
+          element: <Company />,
         },
         {
           path: "privacy-policy",

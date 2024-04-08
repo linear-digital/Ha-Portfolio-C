@@ -134,7 +134,7 @@ export const AllProjectsAnimation = {
   visible: {
     x: 0,
     opacity: 1,
-    transition: { duration: 1.5, delay: 1, type: "spring" },
+    transition: { duration: 1.5, delay: 1.5, type: "spring" },
   },
 };
 

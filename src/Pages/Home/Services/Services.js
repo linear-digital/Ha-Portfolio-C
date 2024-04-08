@@ -6,7 +6,6 @@ import { motion, useAnimation } from "framer-motion";
 import Lottie from "react-lottie";
 import { useInView } from "react-intersection-observer";
 import { serviceTextAnimation } from "../../../Animations/Animations";
-import { Link } from "react-router-dom";
 
 const servicesData = [
   {

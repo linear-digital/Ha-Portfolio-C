@@ -119,6 +119,15 @@ const Banner = () => {
 
               <a
                 rel="noreferrer"
+                className="dark:text-white dark:bg-white flex justify-center items-center"
+                target="_blank"
+                href="/"
+              >
+                <img src="/images/threds.png" className="w-6" alt="" />
+              </a>
+
+              <a
+                rel="noreferrer"
                 className="dark:text-white dark:bg-slate-700"
                 target="_blank"
                 href="https://www.instagram.com/hazratali407/"

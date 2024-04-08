@@ -21,25 +21,7 @@ const Achivement = () => {
           <img src="/achivement/jobplacement.jpeg" alt="" />
         </div>
         <div className='animate__animated animate__fadeInUp animate__delay-.5s'>
-          <img src="/achivement/java.jpeg" alt="" />
-        </div>
-        <div className='animate__animated animate__fadeInLeft animate__delay-.5s'>
-          <img src="/achivement/webdevelopment.jpeg" alt="" />
-        </div>
-        <div className='animate__animated animate__fadeInDown animate__delay-1s'>
-          <img src="/achivement/python.jpeg" alt="" />
-        </div>
-        <div className='animate__animated animate__fadeInRight animate__delay-.5s'>
-          <img src="/achivement/java.jpeg" alt="" />
-        </div>
-        <div className='animate__animated animate__fadeInRight animate__delay-1s'>
-          <img src="/achivement/contest.jpeg" alt="" />
-        </div>
-        <div className='animate__animated animate__fadeInRight animate__delay-2s'>
-          <img src="/achivement/jobplacement.jpeg" alt="" />
-        </div>
-        <div className='animate__animated animate__fadeInUp animate__delay-.5s'>
-          <img src="/achivement/java.jpeg" alt="" />
+          <img src="/achivement/pytron.jpg" alt="" />
         </div>
         <div className='animate__animated animate__fadeInLeft animate__delay-.5s'>
           <img src="/achivement/webdevelopment.jpeg" alt="" />

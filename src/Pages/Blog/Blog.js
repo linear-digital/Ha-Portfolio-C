@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import "./Blog.css";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { ContactTextAnimation } from "../../Animations/Animations";
 
 const Blog = () => {
   const settings = {
@@ -75,10 +76,14 @@ const Blog = () => {
     <>
       {/* Blog Start From Here */}
       <section id="blog" className="container px-6 mx-auto pb-20">
-        <h2 className="my-12 text-5xl text-center tracking-tight font-extrabold  text-dark dark:text-white sm:leading-none">
+        <motion.h2
+          initial="hidden"
+          animate={viewDiv && "visible"}
+          variants={ContactTextAnimation}
+          className="my-12 text-5xl text-center tracking-tight font-extrabold  text-dark dark:text-white sm:leading-none">
           Recent
           <span className="text-indigo-600 dark:text-indigo-500"> Blogs</span>
-        </h2>
+        </motion.h2>
         <div className="" ref={ref}>
           <Slider {...settings}>
             <motion.div
@@ -91,6 +96,7 @@ const Blog = () => {
                   href="https://www.designveloper.com/blog/igaming-website-design/"
                   target="_blank"
                   className="blog-text bg-indigo-900 bg-opacity-80 rounded-lg"
+                  rel="noreferrer"
                 >
                   <div className="flex items-center justify-center w-full h-full">
                     <h1 className="text-white text-2xl font-semibold text-center">
