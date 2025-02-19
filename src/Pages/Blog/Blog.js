@@ -7,6 +7,7 @@ import "./Blog.css";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { ContactTextAnimation } from "../../Animations/Animations";
+import { fetchHashnodeBlogs } from "../../lib/hasnode";
 
 const Blog = () => {
   const settings = {
@@ -71,7 +72,22 @@ const Blog = () => {
       transition: { duration: 1.5, delay: 1.3, type: "spring" },
     },
   };
-
+  const [blogs, setBlogs] = useState([]);
+  useEffect(() => {
+    (
+      async () => {
+        const response = await fetchHashnodeBlogs();
+        setBlogs(response);
+      }
+    )()
+  }, []);
+  if (!blogs) {
+    return (
+      <div className="text-center">
+        <h1>Loading...</h1>
+      </div>
+    );
+  }
   return (
     <>
       {/* Blog Start From Here */}
@@ -86,128 +102,36 @@ const Blog = () => {
         </motion.h2>
         <div className="" ref={ref}>
           <Slider {...settings}>
-            <motion.div
-              initial="hidden"
-              animate={viewDiv && "visible"}
-              variants={blogAnimation}
-            >
-              <div className="mx-4 rounded-lg shadow single-blog cursor-pointer relative">
-                <a
-                  href="https://www.designveloper.com/blog/igaming-website-design/"
-                  target="_blank"
-                  className="blog-text bg-indigo-900 bg-opacity-80 rounded-lg"
-                  rel="noreferrer"
+            {
+              blogs?.map((blog) => {
+                return <motion.div
+                  key={blog.id}
+                  initial="hidden"
+                  animate={viewDiv && "visible"}
+                  variants={blogAnimation}
                 >
-                  <div className="flex items-center justify-center w-full h-full">
-                    <h1 className="text-white text-2xl font-semibold text-center">
-                      iGaming Website Design: Anti-Money Laundering Guidance
-                    </h1>
+                  <div className="mx-4 rounded-lg shadow single-blog cursor-pointer relative">
+                    <a
+                      href={blog.url}
+                      target="_blank"
+                      className="blog-text bg-indigo-900 bg-opacity-80 rounded-lg"
+                      rel="noreferrer"
+                    >
+                      <div className="flex items-center justify-center w-full h-full">
+                        <h1 className="text-white text-2xl font-semibold text-center">
+                          {blog.title}
+                        </h1>
+                      </div>
+                    </a>
+                    <img
+                      src={blog.coverImage?.url || "https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg"}
+                      alt="blog"
+                      className="blog-image w-full h-72 hidden rounded-lg object-cover"
+                    />
                   </div>
-                </a>
-                <img
-                  src="https://www.designveloper.com/wp-content/uploads/2023/12/igaming-website-design-anti-money-laundering-guidance.png"
-                  alt="blog"
-                  className="blog-image w-full h-72 hidden rounded-lg"
-                />
-              </div>
-            </motion.div>
-            <motion.div
-              initial="hidden"
-              animate={viewDiv && "visible"}
-              variants={blogAnimation}
-            >
-              <div className="mx-4 rounded-lg shadow single-blog cursor-pointer relative">
-                <a
-                  href="https://www.designveloper.com/blog/responsive-web-design/"
-                  target="_blank"
-                  className="blog-text bg-indigo-900 bg-opacity-80 rounded-lg"
-                >
-                  <div className="flex items-center justify-center w-full h-full">
-                    <h1 className="text-white text-2xl font-semibold text-center">
-                      Responsive Web Design: Definition, Best Practice, Pros &
-                      Cons
-                    </h1>
-                  </div>
-                </a>
-                <img
-                  src="https://www.designveloper.com/wp-content/uploads/2021/07/responsive-web-design.jpg"
-                  alt="blog"
-                  className="blog-image w-full  h-72 hidden rounded-lg"
-                />
-              </div>
-            </motion.div>
-            <motion.div
-              initial="hidden"
-              animate={viewDiv && "visible"}
-              variants={blogAnimation}
-            >
-              <div className="mx-4 rounded-lg shadow single-blog cursor-pointer relative">
-                <a
-                  href="https://www.designveloper.com/blog/modern-website-design/"
-                  target="_blank"
-                  className="blog-text bg-indigo-900 bg-opacity-80 rounded-lg"
-                >
-                  <div className="flex items-center justify-center w-full h-full">
-                    <h1 className="text-white text-2xl font-semibold text-center">
-                      10 Modern Website Design Examples: A Complete Guide
-                    </h1>
-                  </div>
-                </a>
-                <img
-                  src="https://www.designveloper.com/wp-content/uploads/2023/03/Designveloper-Modern-Website-Design-Concepts.png"
-                  alt="blog"
-                  className="blog-image w-full h-72 hidden rounded-lg"
-                />
-              </div>
-            </motion.div>
-            <motion.div
-              initial="hidden"
-              animate={viewDiv && "visible"}
-              variants={blogAnimation}
-            >
-              <div className="mx-4 rounded-lg shadow single-blog cursor-pointer relative">
-                <a
-                  href="https://www.designveloper.com/blog/what-is-a-web-based-application/"
-                  target="_blank"
-                  className="blog-text bg-indigo-900 bg-opacity-80 rounded-lg"
-                >
-                  <div className="flex items-center justify-center w-full h-full">
-                    <h1 className="text-white text-2xl font-semibold text-center">
-                      What Is a Web-based Application? Examples and Benefits
-                    </h1>
-                  </div>
-                </a>
-                <img
-                  src="https://www.designveloper.com/wp-content/uploads/2022/03/what-is-a-web-based-application.jpg"
-                  alt="blog"
-                  className="blog-image w-full h-72 hidden rounded-lg"
-                />
-              </div>
-            </motion.div>
-            <motion.div
-              initial="hidden"
-              animate={viewDiv && "visible"}
-              variants={blogAnimation}
-            >
-              <div className="mx-4 rounded-lg shadow single-blog cursor-pointer relative">
-                <a
-                  href="https://www.designveloper.com/blog/web-application-examples/"
-                  target="_blank"
-                  className="blog-text bg-indigo-900 bg-opacity-80 rounded-lg"
-                >
-                  <div className="flex items-center justify-center w-full h-full">
-                    <h1 className="text-white text-2xl font-semibold text-center">
-                      10 Web Application Examples and Definition for Beginners
-                    </h1>
-                  </div>
-                </a>
-                <img
-                  src="https://www.designveloper.com/wp-content/uploads/2021/02/web-application-examples.png"
-                  alt="blog"
-                  className="blog-image w-full h-72 hidden rounded-lg"
-                />
-              </div>
-            </motion.div>
+                </motion.div>
+              })
+            }
           </Slider>
         </div>
       </section>

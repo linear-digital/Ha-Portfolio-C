@@ -54,7 +54,7 @@ function App() {
             {/* Cursor  */}
             <AnimatedCursor innerSize={12} outerSize={10} color="67, 56, 202" />
             {/* Jiki miki  */}
-            <Particle /> 
+            {/* <Particle />  */}
             <ScrollToTop smooth color="white" style={{backgroundColor: "#6366F1" ,bottom:'130px'}}/>
             <Navbar />
             <Background>
